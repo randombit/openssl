@@ -4417,3 +4417,8 @@ RAND_POOL_add                           4361	1_1_1	EXIST::FUNCTION:
 RAND_POOL_add_begin                     4362	1_1_1	EXIST::FUNCTION:
 RAND_POOL_add_end                       4363	1_1_1	EXIST::FUNCTION:
 RAND_POOL_acquire_entropy               4364	1_1_1	EXIST::FUNCTION:
+SM3                                     5000    1_1_1   EXIST::FUNCTION:SM3
+SM3_Init                                5001    1_1_1   EXIST::FUNCTION:SM3
+SM3_Update                              5002    1_1_1   EXIST::FUNCTION:SM3
+SM3_Final                               5003    1_1_1   EXIST::FUNCTION:SM3
+EVP_sm3                                 5004    1_1_1   EXIST::FUNCTION:SM3

@@ -1130,3 +1130,5 @@ ffdhe6144		1129
 ffdhe8192		1130
 cmcCA		1131
 cmcRA		1132
+sm3		1133
+sm3WithRSAEncryption		1134

@@ -9,6 +9,9 @@
 
  Changes between 1.1.0f and 1.1.1 [xx XXX xxxx]
 
+  *) Add SM3 implemented according to GM/T 0004-2012
+     [Jack Lloyd <jack.lloyd@ribose.com>]
+
   *) Reimplement -newreq-nodes and ERR_error_string_n; the
      original author does not agree with the license change.
      [Rich Salz]
