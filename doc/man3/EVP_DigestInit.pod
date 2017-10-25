@@ -52,6 +52,7 @@ EVP_get_digestbyobj - EVP digest routines
  const EVP_MD *EVP_ripemd160(void);
  const EVP_MD *EVP_blake2b512(void);
  const EVP_MD *EVP_blake2s256(void);
+ const EVP_MD *EVP_sm3(void);
 
  const EVP_MD *EVP_sha224(void);
  const EVP_MD *EVP_sha256(void);
@@ -144,9 +145,9 @@ reasons.
 EVP_md2(), EVP_md5(), EVP_sha1(), EVP_sha224(), EVP_sha256(),
 EVP_sha384(), EVP_sha512(), EVP_sha3_224(), EVP_sha3_256(),
 EVP_sha3_384(), EVP_sha3_512(), EVP_mdc2(), EVP_ripemd160(),
-EVP_blake2b512(), and EVP_blake2s256() return B<EVP_MD> structures for
+EVP_sm3(), EVP_blake2b512(), and EVP_blake2s256() return B<EVP_MD> structures for
 the MD2, MD5, SHA1, SHA224, SHA256, SHA384, SHA512, SHA3-224, SHA3-256,
-SHA3-384, SHA3-512, MDC2, RIPEMD160, BLAKE2b-512, and BLAKE2s-256 digest
+SHA3-384, SHA3-512, MDC2, RIPEMD160, SM3, BLAKE2b-512, and BLAKE2s-256 digest
 algorithms respectively.
 
 EVP_md_null() is a "null" message digest that does nothing: i.e. the hash it
