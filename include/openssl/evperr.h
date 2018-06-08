@@ -94,6 +94,7 @@ int ERR_load_EVP_strings(void);
 # define EVP_F_EVP_PKEY_PARAM_CHECK                       189
 # define EVP_F_EVP_PKEY_PUBLIC_CHECK                      190
 # define EVP_F_EVP_PKEY_SET1_ENGINE                       187
+# define EVP_F_EVP_PKEY_SET_ALIAS_TYPE                    204
 # define EVP_F_EVP_PKEY_SIGN                              140
 # define EVP_F_EVP_PKEY_SIGN_INIT                         141
 # define EVP_F_EVP_PKEY_VERIFY                            142
@@ -162,6 +163,7 @@ int ERR_load_EVP_strings(void);
 # define EVP_R_NO_DIGEST_SET                              139
 # define EVP_R_NO_KEY_SET                                 154
 # define EVP_R_NO_OPERATION_SET                           149
+# define EVP_R_NULL_ARGUMENT                              183
 # define EVP_R_ONLY_ONESHOT_SUPPORTED                     177
 # define EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE   150
 # define EVP_R_OPERATON_NOT_INITIALIZED                   151

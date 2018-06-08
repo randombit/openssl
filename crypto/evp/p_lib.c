@@ -356,6 +356,41 @@ int EVP_PKEY_set_type_str(EVP_PKEY *pkey, const char *str, int len)
 {
     return pkey_set_type(pkey, NULL, EVP_PKEY_NONE, str, len);
 }
+
+int EVP_PKEY_set_alias_type(EVP_PKEY *pkey, int type)
+{
+    const EVP_PKEY_ASN1_METHOD *ameth;
+
+    if(pkey == NULL) {
+        EVPerr(EVP_F_EVP_PKEY_SET_ALIAS_TYPE, EVP_R_NULL_ARGUMENT);
+        return 0;
+    }
+
+    if(pkey->type == type) {
+        return 1; // it already is that type
+    }
+
+    ameth = EVP_PKEY_asn1_find(NULL, type);
+
+    if (ameth == NULL) {
+        EVPerr(EVP_F_EVP_PKEY_SET_ALIAS_TYPE, EVP_R_UNSUPPORTED_ALGORITHM);
+        return 0;
+    }
+
+    /*
+    The application is requesting to alias this to a different pkey type,
+    but not one that resolves to the base type.
+    */
+    if (ameth->pkey_id != pkey->type) {
+        EVPerr(EVP_F_EVP_PKEY_SET_ALIAS_TYPE, EVP_R_UNSUPPORTED_ALGORITHM);
+        return 0;
+    }
+
+    pkey->save_type = pkey->type;
+    pkey->type = type;
+    return 1;
+}
+
 #ifndef OPENSSL_NO_ENGINE
 int EVP_PKEY_set1_engine(EVP_PKEY *pkey, ENGINE *e)
 {
