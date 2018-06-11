@@ -361,13 +361,13 @@ int EVP_PKEY_set_alias_type(EVP_PKEY *pkey, int type)
 {
     const EVP_PKEY_ASN1_METHOD *ameth;
 
-    if(pkey == NULL) {
+    if (pkey == NULL) {
         EVPerr(EVP_F_EVP_PKEY_SET_ALIAS_TYPE, EVP_R_NULL_ARGUMENT);
         return 0;
     }
 
-    if(pkey->type == type) {
-        return 1; // it already is that type
+    if (pkey->type == type) {
+        return 1; /* it already is that type */
     }
 
     ameth = EVP_PKEY_asn1_find(NULL, type);
@@ -378,15 +378,14 @@ int EVP_PKEY_set_alias_type(EVP_PKEY *pkey, int type)
     }
 
     /*
-    The application is requesting to alias this to a different pkey type,
-    but not one that resolves to the base type.
+    * The application is requesting to alias this to a different pkey type,
+    * but not one that resolves to the base type.
     */
-    if (ameth->pkey_id != pkey->type) {
+    if (EVP_PKEY_type(type) != EVP_PKEY_base_id(pkey)) {
         EVPerr(EVP_F_EVP_PKEY_SET_ALIAS_TYPE, EVP_R_UNSUPPORTED_ALGORITHM);
         return 0;
     }
 
-    pkey->save_type = pkey->type;
     pkey->type = type;
     return 1;
 }
