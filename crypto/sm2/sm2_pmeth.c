@@ -256,7 +256,7 @@ static int pkey_sm2_paramgen(EVP_PKEY_CTX *ctx, EVP_PKEY *pkey)
     if (ec == NULL)
         return 0;
     ret = EC_KEY_set_group(ec, dctx->gen_group);
-    if (ret != NULL)
+    if (ret)
         EVP_PKEY_assign_EC_KEY(pkey, ec);
     else
         EC_KEY_free(ec);
