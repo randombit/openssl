@@ -2532,9 +2532,9 @@ top:
         key->name = take_value(pp);
 
         /* Hack to detect SM2 keys */
-        if(strstr(key->name, "SM2")) {
+        if(strstr(key->name, "SM2"))
             EVP_PKEY_set_alias_type(pkey, EVP_PKEY_SM2);
-        }
+
         key->key = pkey;
         key->next = *klist;
         *klist = key;

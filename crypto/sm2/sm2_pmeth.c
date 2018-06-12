@@ -191,10 +191,10 @@ static int pkey_sm2_ctrl(EVP_PKEY_CTX *ctx, int type, int p1, void *p2)
         return 1;
 
     case EVP_PKEY_CTRL_MD:
-        if (EVP_MD_type((const EVP_MD *)p2) != NID_sha256 &&
-            EVP_MD_type((const EVP_MD *)p2) != NID_sha384 &&
-            EVP_MD_type((const EVP_MD *)p2) != NID_sha512 &&
-            EVP_MD_type((const EVP_MD *)p2) != NID_sm3) {
+        if (EVP_MD_type((const EVP_MD *)p2) != NID_sha256
+            && EVP_MD_type((const EVP_MD *)p2) != NID_sha384
+            && EVP_MD_type((const EVP_MD *)p2) != NID_sha512
+            && EVP_MD_type((const EVP_MD *)p2) != NID_sm3) {
             SM2err(SM2_F_PKEY_SM2_CTRL, SM2_R_INVALID_DIGEST_TYPE);
             return 0;
         }
@@ -276,7 +276,7 @@ static int pkey_sm2_keygen(EVP_PKEY_CTX *ctx, EVP_PKEY *pkey)
     if (ec == NULL)
         return 0;
     EVP_PKEY_assign_EC_KEY(pkey, ec);
-    if (ctx->pkey) {
+    if (ctx->pkey != NULL) {
         /* Note: if error return, pkey is freed by parent routine */
         if (!EVP_PKEY_copy_parameters(pkey, ctx->pkey))
             return 0;
